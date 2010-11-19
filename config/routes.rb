@@ -1,13 +1,15 @@
 CodenameSpidermonkey::Application.routes.draw do
-  resources :grades
-
-  resources :payables
-
-  resources :statements
+  resources :statements do
+    resources :payables
+  end
 
   resources :payments
 
-  resources :contracts
+  resources :contracts do
+    resources :grades
+  end
+  
+  root :to => "statements#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
