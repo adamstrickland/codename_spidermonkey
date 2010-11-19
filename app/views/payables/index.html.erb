@@ -1,0 +1,21 @@
+<h1>Listing payables</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payables.each do |payable| %>
+  <tr>
+    <td><%= link_to 'Show', payable %></td>
+    <td><%= link_to 'Edit', edit_payable_path(payable) %></td>
+    <td><%= link_to 'Destroy', payable, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Payable', new_payable_path %>

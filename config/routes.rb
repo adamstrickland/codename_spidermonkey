@@ -1,4 +1,12 @@
 CodenameSpidermonkey::Application.routes.draw do
+  resources :payables
+
+  resources :statements
+
+  resources :payments
+
+  resources :contracts
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
