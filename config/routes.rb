@@ -1,4 +1,6 @@
 CodenameSpidermonkey::Application.routes.draw do
+  resources :grades
+
   resources :payables
 
   resources :statements

@@ -1,7 +1,9 @@
 class CreateParticipants < ActiveRecord::Migration
   def self.up
     create_table :participants do |t|
-
+      t.string :name
+      t.string :ssn
+      t.references :division
       t.timestamps
     end
   end
