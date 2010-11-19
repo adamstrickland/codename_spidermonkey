@@ -13,9 +13,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug'
-
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
@@ -28,3 +25,40 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :development, :test do
+  gem 'faker', :git => 'git://github.com/radar/faker.git' # to get rid of deprecation warnings
+  
+  # To use debugger
+  # gem 'ruby-debug'
+  
+  gem 'haml-rails'
+  gem 'rails3-generators'
+end
+
+group :test do
+  gem "rspec-rails",  ">= 2.0.0.beta.22"
+  gem "spork"
+  gem "autotest"
+  gem "machinist"
+  
+  #cucumber stuff
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'spork'
+  gem 'launchy'
+  
+  #for pivotal integration
+  gem 'pickler'
+end
+
+gem 'haml'
+gem 'acts_as_list'
+gem 'acts-as-taggable-on'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+gem 'oauth2', :git => 'git://github.com/intridea/oauth2.git'
+gem 'acl9'
+gem 'hassle', :git => 'http://github.com/Papipo/hassle.git'
+gem 'hoptoad_notifier'
