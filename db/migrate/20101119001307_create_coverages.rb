@@ -3,6 +3,7 @@ class CreateCoverages < ActiveRecord::Migration
     create_table :coverages do |t|
       t.references :plan
       t.references :division
+      t.string :number
       t.timestamps
     end
   end

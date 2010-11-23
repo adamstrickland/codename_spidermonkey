@@ -3,7 +3,6 @@ class CreatePayables < ActiveRecord::Migration
     create_table :payables do |t|
       t.references :statement
       t.float :amount
-      t.references :payment
       t.timestamps
     end
   end

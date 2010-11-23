@@ -1,0 +1,66 @@
+$text_color_base = white
+
+$primary = #e91100
+$primary_variant = #970b00
+$secondary_a = #027d8e
+$secondary_b = #88d800
+
+$hover_fore = #333333
+$hover_back = -#111111
+
+$base = black
+$background = #202020
+$midground = #333333
+$foreground = #424242
+$highlight = #666666
+// $highlight = #767676
+$text = white
+
+
+body
+  :background fixed $base url(/images/gradient.png) 0 0 repeat-x  
+  a, a:link, a:visited
+    :color $text
+  a:hover
+    :background-color $text + $hover_back
+  #content
+    :background-color $base
+    :color $text
+    :border-color $base
+    header
+      #profile
+        :color $text
+        :border solid 1px $base
+        :background-color $secondary_a
+    a.call_to_action:link, a.call_to_action:visited  
+      :color $base
+      :background-color $secondary_b
+    a.call_to_action:hover  
+      :color $base + $hover_fore
+      :background-color $secondary_b + $hover_back
+    form
+      #error_explanation
+        :color $primary
+    nav
+      :background-color $primary_variant
+    article
+      :background-color $midground
+      header
+      section#messages
+        p.notice
+        p.alert
+      div#main,footer
+        :background-color $foreground
+      div#main
+        section
+      footer
+        a.back, a.back:link, a.back:visited
+          :background-color $secondary_a
+        a.back:hover
+          :background-color $secondary_a + $hover_back
+          :color $text + $hover_fore
+          
+    footer
+      :background-color $base
+  
+          

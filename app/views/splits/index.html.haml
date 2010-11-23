@@ -1,0 +1,17 @@
+%h1 Listing splits
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @splits.each do |split|
+    %tr
+      %td= link_to 'Show', split
+      %td= link_to 'Edit', edit_split_path(split)
+      %td= link_to 'Destroy', split, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Split', new_split_path

@@ -1,0 +1,18 @@
+%section#attention
+  %h2 Unconfigured Coverages
+  %ul
+    -@unconfigured.each do |coverage|
+      %li=link_to coverage.name, coverage_url(coverage)
+  
+%section#listing
+  %h2 Configured Coverages
+  %ul
+    -@configured.each do |coverage|
+      %li=link_to coverage.name, coverage_url(coverage)
+  %footer
+    =will_paginate @configured
+    
+-content_for :styles do
+  :sass
+    #attention ul li:hover, #listing ul li:hover
+      :background-color black

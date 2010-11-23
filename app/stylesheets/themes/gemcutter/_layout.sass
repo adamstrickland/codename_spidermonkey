@@ -1,0 +1,71 @@
+$border-rad = 10px
+$rad = $border-rad
+$content-border = 3px
+
+@mixin roundy($rad)
+  :padding $rad / 2
+
+@mixin roundybox($rad)
+  @include roundy($rad)
+  :-webkit-border-radius $rad
+  :-moz-border-radius $rad
+  :border-radius $rad
+  
+@mixin roundybottom($rad)
+  @include roundy($rad)
+  :-webkit-border-radius 0 0 $rad $rad
+  :-moz-border-radius 0 0 $rad $rad
+  :border-radius 0 0 $rad $rad
+
+body
+  #content
+    :padding
+      :top 1em
+    :border-style solid
+    :border-left-width $content-border
+    :border-right-width $content-border
+    &>header,&>nav,&>article
+      :padding-left 1em
+      :padding-right 1em
+    header
+      #profile
+        @include roundybottom($rad)
+        :position absolute
+        :float right
+        :padding $border-rad / 2
+        :overflow hidden
+        :z-index 3000
+        :top 0
+        :right 0
+        :padding-right 20em
+        a
+          img
+            :height 20px
+    nav
+      ul
+        :padding 5px 0
+        li
+          :display inline
+    article
+      @include roundybottom($rad)
+      header
+      section#messages
+        p.notice
+        p.alert
+      div#main
+        @include roundybox($rad)
+        :padding-left 1em
+        :padding-right 1em
+      footer
+        a.back
+          @include roundybox(5px)
+          :display block
+          :float right
+          :padding 2px 1em
+      aside
+        @include roundybox($rad)
+    footer
+      :height 4em
+      :padding-top 1em
+      .copyright
+        :text-align right

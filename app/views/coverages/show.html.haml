@@ -1,0 +1,9 @@
+%section
+  %h2 Coverage: #{@coverage.name}
+  %h4 Type:  #{@coverage.plan.line_of_coverage}
+  -if @coverage.contract.present?
+    %h4 Contract: #{@coverage.contract} 
+  -else
+    =link_to "Add Contract", new_coverage_contract_path(@coverage)
+  %footer
+    =link_to 'Back', coverages_path, :class => :back

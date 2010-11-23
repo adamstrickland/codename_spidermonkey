@@ -1,0 +1,3 @@
+%ul
+  -%w(coverages statements transactions payables reports).each do |c|
+    %li=link_to c.capitalize, :controller => c.to_sym, :action => :index

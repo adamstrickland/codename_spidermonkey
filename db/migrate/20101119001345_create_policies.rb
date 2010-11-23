@@ -3,6 +3,7 @@ class CreatePolicies < ActiveRecord::Migration
     create_table :policies do |t|
       t.references :participant
       t.references :coverage
+      t.string :number
       t.timestamps
     end
   end

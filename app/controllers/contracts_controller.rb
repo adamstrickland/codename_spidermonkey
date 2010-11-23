@@ -25,6 +25,7 @@ class ContractsController < ApplicationController
   # GET /contracts/new.xml
   def new
     @contract = Contract.new
+    @coverage = Coverage.find(params[:coverage_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +42,7 @@ class ContractsController < ApplicationController
   # POST /contracts.xml
   def create
     @contract = Contract.new(params[:contract])
+    @contract.coverage = Coverage.find(params[:coverage_id])
 
     respond_to do |format|
       if @contract.save

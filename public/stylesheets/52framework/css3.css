@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS3 52framework */
+
+/* 
+	The CSS3 Text-Shadow property contains the following values
+	horizontal-offset (length, required) | vertical-offset (length, required) | blur-radius (length, optional) | shadow-color (color, optional) 
+*/
+.shadow {	text-shadow:1px 1px 1px #666;}/*<-- edit the color you wish to use in your shadows */
+
+
+
+.rounded {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:1px solid #ccc;
+}
+
+.rounded_top_right {
+	border-top-right-radius:5px;
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border:1px solid #ccc;
+}
+
+.box_shadow {
+	-webkit-box-shadow: 2px 2px 3px #ccc;
+	-moz-box-shadow: 2px 2px 3px #ccc;
+	box-shadow: 2px 2px 3px #ccc;
+}
+
+.rotate {
+	-webkit-transform: rotate(-15deg);
+	-moz-transform: rotate(-15deg);
+}

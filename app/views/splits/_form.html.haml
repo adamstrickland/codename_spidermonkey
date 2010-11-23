@@ -1,0 +1,10 @@
+= form_for @split do |f|
+  -if @split.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@split.errors.count, "error")} prohibited this split from being saved:"
+      %ul
+        - @split.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

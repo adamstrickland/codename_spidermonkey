@@ -1,0 +1,49 @@
+!!! 5
+%html
+  %head
+    %title CODENAME: SpiderMonkey
+    =stylesheet_link_tag %w(reset css3 general grid).map{|w| "52framework/#{w}" }, :cache => "52framework"
+    =stylesheet_link_tag "application"
+    =stylesheet_link_tag "themes/gemcutter/styles"
+    %style
+      =yield :styles  
+    =javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js", "rails.jquery", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.js", :cache => "jquery"
+    =yield :scripts
+    =csrf_meta_tag
+  %body
+    #content.row
+      %header
+        %h1 SpiderMonkey
+        #profile
+          .greet Welcome, #{link_to "Adam Strickland", '#'}
+          .control
+            %ul=link_to "Admin", '#'
+            %div{ :style => 'display:none' }
+              -%w(contracts).each do |c|
+                %li=link_to c.capitalize, :controller => c.to_sym, :action => :index
+      %nav
+        .global
+          =render :partial => "shared/global_navigation"
+
+      %article
+        %header
+          =yield :header
+    
+        %section#messages
+          %p.notice=notice
+          %p.alert=alert
+        
+        %div#main
+          =yield
+
+        %aside
+          =yield :aside
+          
+      %hr#foot
+      %footer
+        .row
+          .col.col_8
+            SpiderMonkey
+          .col.col_8.copyright
+            &copy; BenefitMall, 2010
+        %hr

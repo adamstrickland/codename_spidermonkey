@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101119002139) do
+ActiveRecord::Schema.define(:version => 20101123001553) do
 
   create_table "brokers", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20101119002139) do
 
   create_table "contracts", :force => true do |t|
     t.integer  "coverage_id"
+    t.boolean  "multiplan",   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20101119002139) do
   create_table "coverages", :force => true do |t|
     t.integer  "plan_id"
     t.integer  "division_id"
+    t.string   "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,8 +53,9 @@ ActiveRecord::Schema.define(:version => 20101119002139) do
 
   create_table "grades", :force => true do |t|
     t.integer  "contract_id"
-    t.integer  "amount"
-    t.float    "percentage"
+    t.string   "type"
+    t.float    "minimum"
+    t.float    "maximum"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,13 +77,23 @@ ActiveRecord::Schema.define(:version => 20101119002139) do
   create_table "payables", :force => true do |t|
     t.integer  "statement_id"
     t.float    "amount"
-    t.integer  "payment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payees", :force => true do |t|
+    t.integer  "broker_id"
+    t.integer  "carrier_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "payments", :force => true do |t|
     t.float    "amount"
+    t.string   "classification"
+    t.integer  "payee_id"
+    t.integer  "payable_id"
+    t.integer  "transaction_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,6 +109,16 @@ ActiveRecord::Schema.define(:version => 20101119002139) do
   create_table "policies", :force => true do |t|
     t.integer  "participant_id"
     t.integer  "coverage_id"
+    t.string   "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "splits", :force => true do |t|
+    t.integer  "grade_id"
+    t.integer  "payee_id"
+    t.string   "type"
+    t.float    "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -103,6 +126,14 @@ ActiveRecord::Schema.define(:version => 20101119002139) do
   create_table "statements", :force => true do |t|
     t.integer  "broker_id"
     t.integer  "carrier_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.float    "amount"
+    t.string   "ssn"
+    t.string   "policy"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

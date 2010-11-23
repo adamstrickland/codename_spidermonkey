@@ -1,15 +1,33 @@
 CodenameSpidermonkey::Application.routes.draw do
-  resources :statements do
-    resources :payables
-  end
+  get "home/index"
 
   resources :payments
+  resources :payables do
+    resources :payments
+  end
+  resources :statements
 
-  resources :contracts do
-    resources :grades
+  resources :coverages do
+    resources :contracts do
+      resources :grades do
+        resources :splits
+      end
+    end
+  end
+  resources :transactions
+  resources :contracts
+  
+  resources :reports do
+    collection do
+      get 'license_expiration'
+      get 'broker_reconcilliation'
+      get 'nonstandard_commissions'
+      get 'mather'
+      get 'line_of_coverage'
+    end
   end
   
-  root :to => "statements#index"
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

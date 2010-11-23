@@ -1,6 +1,11 @@
 require 'machinist/active_record'
 require 'sham'
 
+Sham.define{
+  group_number{ "%010d" % rand(100000000) }
+  policy_number{ "%010d" % rand(100000000) }
+}
+
 Carrier.blueprint do
   name{ Faker::Company.name }
 end
@@ -9,6 +14,14 @@ Plan.blueprint do
   name{ Faker::Lorem.words(3).join }
   line_of_coverage{ 'Medical' }
   carrier
+end
+
+Plan.blueprint(:dental) do
+  line_of_coverage{ 'Dental' }
+end
+
+Plan.blueprint(:vision) do
+  line_of_coverage{ 'Vision' }
 end
 
 Group.blueprint do
@@ -28,6 +41,7 @@ end
 Coverage.blueprint do
   plan
   division
+  number{ Sham.group_number }
 end
 
 Broker.blueprint do
@@ -42,6 +56,7 @@ end
 Policy.blueprint do
   participant
   coverage
+  number{ Sham.policy_number }
 end
 
 Payment.blueprint do

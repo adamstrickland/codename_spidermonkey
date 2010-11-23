@@ -1,0 +1,17 @@
+%h1 Listing contracts
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @contracts.each do |contract|
+    %tr
+      %td= link_to 'Show', contract
+      %td= link_to 'Edit', edit_contract_path(contract)
+      %td= link_to 'Destroy', contract, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Contract', new_contract_path

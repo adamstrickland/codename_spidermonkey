@@ -1,3 +1,6 @@
 class Payment < ActiveRecord::Base
-  has_many :payables
+  belongs_to :transaction
+  belongs_to :payable
+  belongs_to :payee
+  belongs_to :split
 end

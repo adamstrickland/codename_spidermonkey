@@ -1,0 +1,10 @@
+= form_for @coverage do |f|
+  -if @coverage.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@coverage.errors.count, "error")} prohibited this coverage from being saved:"
+      %ul
+        - @coverage.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'
